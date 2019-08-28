@@ -1,0 +1,2224 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+      <meta charset='utf-8' />
+      <title>Activity</title>
+      <meta name='robots' content='noindex, nofollow'>
+      <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+      <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet'>
+      <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.js'></script>
+      <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.1/mapbox-gl.css' rel='stylesheet' />
+
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      
+      <!--Fonts-->
+      <link href="css/font.css" rel='stylesheet' type='text/css'>
+      
+      <!--owl-carousel css-->
+      <link rel="stylesheet" href="css/owl-carousel/owl.carousel.css">
+      <link rel="stylesheet" href="css/owl-carousel/owl.theme.css">
+      <link rel="stylesheet" href="css/owl-carousel/owl.transitions.css">
+      <!--<link rel="stylesheet" href="css/animations.css">-->
+      <link rel="stylesheet" href="css/font-awesome.min.css">
+      <link rel="stylesheet" href="css/main.css">
+      <link rel="stylesheet" href="css/color1.css">
+      
+      <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
+
+      
+
+      <style>
+
+        body {
+          color:#404040;
+          font:400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
+          margin:0;
+          padding:0;
+          -webkit-font-smoothing:antialiased;
+        }
+
+        * {
+          -webkit-box-sizing:border-box;
+          -moz-box-sizing:border-box;
+          box-sizing:border-box;
+        }
+
+        .sidebar {
+          position:absolute;
+          width:25%;
+          height:662px;
+          top:560px;
+          left:0px;
+          overflow:hidden;
+          border-right:1px solid rgba(0,0,0,0.25);
+        }
+        .pad2 {
+          padding:20px;
+        }
+
+        .map {
+          position:absolute;
+          left:25%;
+          width:75%;
+          height:662px;
+          top:560px;
+        }
+
+        h1 {
+          font-size:25px;
+          margin:0;
+          font:400;
+          line-height: 20px;
+          padding: 20px 2px;
+        }
+
+        a {
+          color:#404040;
+          text-decoration:none;
+        }
+
+        a:hover {
+          color:#101010;
+        }
+
+        .heading {
+          background:#fff;
+          border-bottom:1px solid #eee;
+          min-height:60px;
+          line-height:60px;
+          padding:0 10px;
+          background-color: #8cc63f;
+          color: #fff;
+        }
+
+        .listings {
+          height:100%;
+          overflow:auto;
+          padding-bottom:60px;
+        }
+
+        .listings .item {
+          display:block;
+          border-bottom:1px solid #eee;
+          padding:10px;
+          text-decoration:none;
+        }
+
+        .listings .item:last-child { border-bottom:none; }
+        .listings .item .title {
+          display:block;
+          color:#00853e;
+          font-weight:700;
+        }
+
+        .listings .item .title small { font-weight:400; }
+        .listings .item.active .title,
+        .listings .item .title:hover { color:#8cc63f; }
+        .listings .item.active {
+          background-color:#f8f8f8;
+        }
+
+        .marker {
+          border: none;
+          cursor: pointer;
+          height: 32px;
+          width: 32px;
+          background-image: url(marker.png);
+          background-color: rgba(0, 0, 0, 0);
+        }
+
+        .clearfix { display:block; }
+        .clearfix:after {
+          content:'.';
+          display:block;
+          height:0;
+          clear:both;
+          visibility:hidden;
+        }
+
+        /* Marker tweaks */
+        .mapboxgl-popup {
+          padding-bottom: 50px;
+        }
+
+        .mapboxgl-popup-close-button {
+          display:none;
+        }
+        .mapboxgl-popup-content {
+          font:400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
+          padding:0;
+          width:300px;
+        }
+        .mapboxgl-popup-content-wrapper {
+          padding:1%;
+        }
+        .mapboxgl-popup-content h3 {
+          background:#91c949;
+          color:#fff;
+          margin:0;
+          display:block;
+          padding:10px;
+          border-radius:3px 3px 0 0;
+          font-size: 20px;
+          font:100;
+          margin-top:-15px;
+        }
+
+        .mapboxgl-popup-content h4 {
+          margin:0;
+          display:block;
+          padding: 10px 10px 10px 10px;
+          font-size: 15px;
+          font-weight:50;
+        }
+
+        .mapboxgl-popup-content div {
+          padding:10px;
+        }
+
+        .mapboxgl-container .leaflet-marker-icon {
+          cursor:pointer;
+        }
+
+        .mapboxgl-popup-anchor-top > .mapboxgl-popup-content {
+          margin-top: 15px;
+        }
+
+        .mapboxgl-popup-anchor-top > .mapboxgl-popup-tip {
+          border-bottom-color: #91c949;
+        }
+
+        .icon {
+          position:absolute;
+        }
+      </style>
+  </head>
+
+  <body id="page-top" class="index about_body">
+
+      <div class="preloader"></div>
+      <header>
+        <!-- Navigation -->
+        <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+          <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+              </button>
+              <a style="display: none" class="navbar-brand page-scroll" href="#page-top"><img src="images/logos/logo.png" alt=""></a>
+            </div>
+      
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav text-center">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="mandala.html">Mandala</a></li>
+                <li><a href="activity.html">Activity</a></li>
+                <li><a href="aboutus.html">About us</a></li>
+                <!--<li class="logo-holder">                        
+                  <a href="index.html"><img src="images/logos/logo.png" alt=""></a>-->
+                </li>
+                <li><a href="contact.html">Contact Us</a></li>
+              </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+          </div>
+          <!-- /.container-fluid -->
+        </nav>
+        
+        <div id="page_header">
+          <div class="page_title">
+            <h3>Activity</h3>
+          </div>
+        </div>
+      </header>
+      <section class="price-plan text-center">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <h2 class="section-heading">Category</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 col-md-offset-1 minus">
+                <div class="pricing-box">
+                  <div id = "location1" class="circle"><a href="#map"><img src="images/phone.png"></a>
+                  </div>
+                  <h4 class="service-heading" >Assembly</h4>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="pricing-box">
+                  <div id = "location2" class="circle"><a href="#map"><img src="images/marketing.png"></a>
+                  </div>
+                  <h4 class="service-heading" >Leisure/recreation</h4>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="pricing-box">
+                  <div id = "location3" class="circle" ><a href="#map"><img src="images/brand.png"></a>
+                  </div>
+                  <h4 class="service-heading" >Worship</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+    <div class='sidebar'>
+      <div class='heading'>
+        <h1>places</h1>
+      </div>
+    <div id='listings' class='listings'></div>
+    </div>
+    <div id='map' class='map'> </div>
+ 
+  <script>
+  // This will let you use the .remove() function later on
+  if (!('remove' in Element.prototype)) {
+    Element.prototype.remove = function() {
+      if (this.parentNode) {
+          this.parentNode.removeChild(this);
+      }
+    };
+  }
+
+  mapboxgl.accessToken = 'pk.eyJ1IjoibWFzcXVlcmFkZXp6IiwiYSI6ImNqenBrbThyaDBjdmszaW1zbG1oNzZuMXkifQ.1vL1zMPn6SKiXuZMymTMTQ';
+
+  // This adds the map
+  var map = new mapboxgl.Map({
+    // container id specified in the HTML
+    container: 'map',
+    // style URL
+    style: 'mapbox://styles/mapbox/streets-v11',
+    // initial position in [long, lat] format
+    center: ["144.96681", "-37.818078"],
+    // initial zoom
+    zoom: 13,
+    scrollZoom: true
+  });
+
+var place1 = {
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9672913,-37.81488558 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Library",
+    "Feature_Name":"The Melbourne Athenaeum Library"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9654639,-37.80776441 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Art Gallery / Museum",
+    "Feature_Name":"Old Melbourne Gaol Crime & Justice Experience"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9688362,-37.82166846 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Theatre Live",
+    "Feature_Name":"FairFax Studio"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9683378,-37.82181246 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Theatre Live",
+    "Feature_Name":"Playhouse"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9684696,-37.82128063 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Theatre Live",
+    "Feature_Name":"State Theatre"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9811422,-37.83524295 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Theatre Live",
+    "Feature_Name":"St Martins Youth Arts Centre"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9723266,-37.81072571 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Theatre Live",
+    "Feature_Name":"Princess Theatre"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9679167,-37.81600147 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Theatre Live",
+    "Feature_Name":"Regent Theatre"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9543524,-37.82524551 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Function / Conference / Exhibition Centre",
+    "Feature_Name":"Melbourne Exhibition Centre"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9522883,-37.82490405 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Function / Conference / Exhibition Centre",
+    "Feature_Name":"Melbourne Convention Centre"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9534781,-37.82425743 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Art Gallery / Museum",
+    "Feature_Name":"Polly Woodside"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9672529,-37.82660454 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Art Gallery / Museum",
+    "Feature_Name":"Australian Centre for Contemporary Art"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9669368,-37.8271768 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Theatre Live",
+    "Feature_Name":"Malthouse Theatre"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9688373,-37.82199473 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Art Gallery / Museum",
+    "Feature_Name":"Victorian Arts Centre"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.969899,-37.81748314 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Art Gallery / Museum",
+    "Feature_Name":"The Ian Potter Centre: NGV Australia"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9839701,-37.81886627 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Art Gallery / Museum",
+    "Feature_Name":"Thoroughbred Racing Gallery"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.943475,-37.81651773 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Function / Conference / Exhibition Centre",
+    "Feature_Name":"Central Pier"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9484967,-37.82137443 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Art Gallery / Museum",
+    "Feature_Name":"Fox Classic Car Collection"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9716907,-37.80355181 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Art Gallery / Museum",
+    "Feature_Name":"Melbourne Museum"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9706399,-37.80343156 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Cinema",
+    "Feature_Name":"IMAX Melbourne"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9681744,-37.82426618 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Theatre Live",
+    "Feature_Name":"MTC Theatre"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9679921,-37.8199901 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Theatre Live",
+    "Feature_Name":"Hamer Hall"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9846698,-37.81895449 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Art Gallery / Museum",
+    "Feature_Name":"National Sports Museum"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9673225,-37.81495435 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Theatre Live",
+    "Feature_Name":"Athanaeum Theatre"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9687501,-37.79765899 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Theatre Live",
+    "Feature_Name":"Carlton Courthouse Theatre"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9695202,-37.81099756 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Theatre Live",
+    "Feature_Name":"Her Majesty's Theatre"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9701331,-37.81020539 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Theatre Live",
+    "Feature_Name":"Comedy Theatre"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9676695,-37.7991305 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Theatre Live",
+    "Feature_Name":"La Mama Theatre"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.980555,-37.81454075 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Art Gallery / Museum",
+    "Feature_Name":"Sinclair's Cottage"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.95404,-37.82221828 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Art Gallery / Museum",
+    "Feature_Name":"Victoria Police Museum"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9604268,-37.81917988 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Art Gallery / Museum",
+    "Feature_Name":"Immigration Museum"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9693866,-37.81648541 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Theatre Live",
+    "Feature_Name":"Forum Theatre"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9753737,-37.80857613 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Art Gallery / Museum",
+    "Feature_Name":"Fire Services Museum Victoria"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9641567,-37.79739396 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Art Gallery / Museum",
+    "Feature_Name":"The Ian Potter Museum Of Art"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9540279,-37.81338543 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Art Gallery / Museum",
+    "Feature_Name":"Koorie Heritage Trust Inc"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9794713,-37.81446049 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Art Gallery / Museum",
+    "Feature_Name":"Cooks' Cottage"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9715219,-37.80460262 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Art Gallery / Museum",
+    "Feature_Name":"Royal Exhibition Building"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9690704,-37.81761073 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Art Gallery / Museum",
+    "Feature_Name":"Australian Centre For The Moving Image (ACMI)"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9813834,-37.80973741 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Function / Conference / Exhibition Centre",
+    "Feature_Name":"Dallas Brooks Centre"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9692339,-37.81076861 ]
+    },
+    "properties": {
+    "Theme":"Place Of Assembly",
+    "Sub_Theme":"Art Gallery / Museum",
+    "Feature_Name":"The Museum Of Australian Chinese History"
+    }
+  }
+]
+};
+
+var place2 = {
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9712665,-37.80606846 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Carlton Gardens South"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.947581,-37.785786 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Major Sports & Recreation Facility",
+    "Feature_Name":"State Netball Hockey Centre"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9603983,-37.80041071 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"University Square"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9563091,-37.78191713 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Private Sports Club / Facility",
+    "Feature_Name":"Royal Park Golf Course"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9872757,-37.81169299 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Powlett Reserve"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9619678,-37.78408644 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Major Sports & Recreation Facility",
+    "Feature_Name":"Carlton Football Club"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9619826,-37.78343039 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Major Sports & Recreation Facility",
+    "Feature_Name":"Visy Park"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9719976,-37.80176908 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Carlton Gardens North"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9741079,-37.82552398 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Kings Domain"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.912143,-37.79080826 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Major Sports & Recreation Facility",
+    "Feature_Name":"Flemington Racecourse"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9759523,-37.81439936 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Treasury Gardens"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9566658,-37.82184609 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Batman Park"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9881563,-37.821674 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Richmond Football Club"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9834029,-37.81949216 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Major Sports & Recreation Facility",
+    "Feature_Name":"Melbourne Cricket Ground (MCG)"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9513712,-37.78444493 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Outdoor Recreation Facility (Zoo /  Golf Course)",
+    "Feature_Name":"Melbourne Zoo"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9134158,-37.82928449 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Private Sports Club / Facility",
+    "Feature_Name":"Melbourne International Shooting Club"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9710495,-37.82163812 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Queen Victoria Gardens"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9689636,-37.81785166 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Federation Square"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9416179,-37.81521788 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"New Quay"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9467817,-37.82099568 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Docklands Park"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.983803,-37.82472527 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Major Sports & Recreation Facility",
+    "Feature_Name":"AAMI Park"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9375889,-37.81161637 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Observation Tower / Wheel",
+    "Feature_Name":"Melbourne Star Observation Wheel"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9421023,-37.82335227 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Point Park"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9229721,-37.78784733 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Newmarket Reserve"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9368337,-37.81169454 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Outdoor Recreation Facility (Zoo /  Golf Course)",
+    "Feature_Name":"Wonderland Park"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9784872,-37.82204561 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Major Sports & Recreation Facility",
+    "Feature_Name":"Rod Laver Arena"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9787358,-37.8209086 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Major Sports & Recreation Facility",
+    "Feature_Name":"Melbourne Park"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9775911,-37.82132521 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Major Sports & Recreation Facility",
+    "Feature_Name":"Margaret Court Arena"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9818348,-37.82311 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Major Sports & Recreation Facility",
+    "Feature_Name":"Hisense Arena"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9731467,-37.81806108 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Birrarung Marr"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9715426,-37.81841988 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Indoor Recreation Facility",
+    "Feature_Name":"Artplay"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9729518,-37.82078871 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Riverslide Skate Park"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9717961,-37.82060514 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Alexandra Gardens"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9414521,-37.79883453 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"North Melbourne Recreation Reserve"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9238371,-37.79823588 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"J.J Holland Park"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9538342,-37.79061743 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Royal Park"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9611152,-37.78701617 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Princes Park"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9736284,-37.8320734 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Shrine of Rembrance Reserve"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9808504,-37.83066316 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Royal Botanic Gardens"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9866711,-37.82046937 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Yarra Park"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.935684,-37.81218812 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Indoor Recreation Facility",
+    "Feature_Name":"Icehouse"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9156071,-37.79483753 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Outdoor Recreation Facility (Zoo /  Golf Course)",
+    "Feature_Name":"Riverside Park"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9890626,-37.81299207 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Darling Square"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9546961,-37.81112229 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Flagstaff Gardens"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9108221,-37.78230979 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Outdoor Recreation Facility (Zoo /  Golf Course)",
+    "Feature_Name":"Melbourne Showgrounds"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9816257,-37.84139967 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Fawkner Park"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9804557,-37.81296163 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Fitzroy Gardens"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9592769,-37.82021027 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Enterprize Park"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9657613,-37.80314806 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Argyle Square"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9658631,-37.80251642 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Piazza Italia"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9715141,-37.79833187 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Macarthur Square"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9730593,-37.8002735 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Murchinson Square"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9734622,-37.80985262 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Parliament Reserve"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9432908,-37.799947 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Major Sports & Recreation Facility",
+    "Feature_Name":"North Melbourne Recreation Centre (Aquatic)"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9403683,-37.79970512 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Gymnasium / Health Club",
+    "Feature_Name":"North Melbourne Recreation Centre (Gymnasium)"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9716965,-37.7934377 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Indoor Recreation Facility",
+    "Feature_Name":"Carlton Baths"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9631898,-37.80715854 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Major Sports & Recreation Facility",
+    "Feature_Name":"City Baths"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9088248,-37.83149186 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Westgate Park"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9797203,-37.82424569 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Major Sports & Recreation Facility",
+    "Feature_Name":"Westpac Centre"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9474963,-37.81617605 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Major Sports & Recreation Facility",
+    "Feature_Name":"Etihad Stadium"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9646222,-37.82161876 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Observation Tower / Wheel",
+    "Feature_Name":"Eureka Skydeck 88"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9629811,-37.8201763 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Sandridge Rail Bridge"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9627609,-37.80279197 ]
+    },
+    "properties": {
+    "Theme":"Leisure/Recreation",
+    "Sub_Theme":"Informal Outdoor Facility (Park / Garden / Reserve)",
+    "Feature_Name":"Lincoln Square"
+    }
+  }
+]
+};
+
+var place3 = {
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9624226,-37.81188478 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"St Francis Church"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9681682,-37.81015764 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"Wesley Church"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.954862,-37.81697414 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"St Augustines Church"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9524686,-37.81012812 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"St James Church"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9537615,-37.80316637 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"St Mary's Anglican Church"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9669864,-37.80523073 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"Romanian Orthodox"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9598733,-37.81044788 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"Welsh Presbyterian Church"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9638892,-37.81045241 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"Church of Christ"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9685511,-37.81456878 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"Scots Church"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.969174,-37.81438513 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"St Michael's Uniting Church"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9782591,-37.80880647 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"Greek Orthodox Church"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9752592,-37.80970867 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"St Peter's Eastern Hill"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9757295,-37.81097571 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"Lutheran Trinity Church"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9831973,-37.81406671 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"Holy Trinity"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9671211,-37.82093997 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"St Johns Lutheran Church"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9476715,-37.80355385 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"North Melbourne Uniting"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9846649,-37.81144878 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"Melbourne Unitarian Church"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9689811,-37.79591553 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"All Nations Uniting Church"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9693347,-37.80257665 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"Our Lady of Lebanon Church"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9453995,-37.79405127 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"St Michaels"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9443135,-37.79630846 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"Ukranian Catholic Cathedral"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9416145,-37.79421695 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"St Alban Anglican Church"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9272957,-37.79321095 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"Christ Church Kensington"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9283621,-37.79480874 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"Holy Rosary"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9680725,-37.81470119 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"Collins Street Baptist Church"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9768091,-37.83530769 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"St Thomas Aquinas Church"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.985627,-37.84074736 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"South Yarra Presbyterian Church"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9860094,-37.83862705 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"The Parish of Christ Church South Yarra"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9742219,-37.80911373 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Synagogue",
+    "Feature_Name":"East Melbourne Synagogue"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9759015,-37.8101141 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"St Patricks Cathedral"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 144.9676816,-37.8169549 ]
+    },
+    "properties": {
+    "Theme":"Place of Worship",
+    "Sub_Theme":"Church",
+    "Feature_Name":"St Pauls Cathedral"
+    }
+  }
+]
+};
+
+var locationDiv1 = document.getElementById("location1");
+locationDiv1.onclick=function(){
+
+//remove the list
+var re = document.getElementsByClassName('item'); 
+for (var i = re.length-1;i >=0;i--) { 
+re[i].remove(); 
+console.log(i); 
+} 
+buildLocationList(place1);
+
+
+
+ // This adds the data to the map
+map.on('load', function (e) {
+    // This is where your '.addLayer()' used to be, instead add only the source without styling a layer
+    map.addSource("places", {
+      "type": "geojson",
+      "data": place1
+    });
+    // Initialize the list
+    buildLocationList(place1);
+});
+
+//remove the marker
+var re = document.getElementsByClassName('marker mapboxgl-marker mapboxgl-marker-anchor-center'); 
+for (var i = re.length-1;i >=0;i--) { 
+re[i].remove(); 
+console.log(i); 
+}
+  // This is where your interactions with the symbol layer used to be
+  // Now you have interactions with DOM markers instead
+  place1.features.forEach(function(marker, i) {
+    // Create an img element for the marker
+    var el = document.createElement('div');
+    el.id = "marker-" + i;
+    el.className = 'marker';
+    // Add markers to the map at all points
+    new mapboxgl.Marker(el, {offset: [0, -23]})
+        .setLngLat(marker.geometry.coordinates)
+        .addTo(map);
+
+    el.addEventListener('click', function(e){
+        // 1. Fly to the point
+        flyToStore(marker);
+
+        // 2. Close all other popups and display popup for clicked place
+        createPopUp(marker);
+
+        // 3. Highlight listing in sidebar (and remove highlight for all other listings)
+        var activeItem = document.getElementsByClassName('active');
+
+        e.stopPropagation();
+        if (activeItem[0]) {
+           activeItem[0].classList.remove('active');
+        }
+
+        var listing = document.getElementById('listing-' + i);
+        listing.classList.add('active');
+
+    });
+  });
+}
+
+var locationDiv2 = document.getElementById("location2");
+locationDiv2.onclick=function(){
+  var re = document.getElementsByClassName('item'); 
+for (var i = re.length-1;i >=0;i--) { 
+re[i].remove(); 
+console.log(i); 
+} 
+buildLocationList(place2);
+  // This adds the data to the map
+  map.on('load', function (e) {
+    // This is where your '.addLayer()' used to be, instead add only the source without styling a layer
+    map.addSource("places", {
+      "type": "geojson",
+      "data": place2
+    });
+    // Initialize the list
+
+});
+
+//remove the marker
+var re = document.getElementsByClassName('marker mapboxgl-marker mapboxgl-marker-anchor-center'); 
+for (var i = re.length-1;i >=0;i--) { 
+re[i].remove(); 
+console.log(i); 
+}
+
+  // This is where your interactions with the symbol layer used to be
+  // Now you have interactions with DOM markers instead
+  place2.features.forEach(function(marker, i) {
+    // Create an img element for the marker
+    var el = document.createElement('div');
+    el.id = "marker-" + i;
+    el.className = 'marker';
+    // Add markers to the map at all points
+    new mapboxgl.Marker(el, {offset: [0, -23]})
+        .setLngLat(marker.geometry.coordinates)
+        .addTo(map);
+
+    el.addEventListener('click', function(e){
+        // 1. Fly to the point
+        flyToStore(marker);
+
+        // 2. Close all other popups and display popup for clicked place
+        createPopUp(marker);
+
+        // 3. Highlight listing in sidebar (and remove highlight for all other listings)
+        var activeItem = document.getElementsByClassName('active');
+
+        e.stopPropagation();
+        if (activeItem[0]) {
+           activeItem[0].classList.remove('active');
+        }
+
+        var listing = document.getElementById('listing-' + i);
+        listing.classList.add('active');
+    });
+  });
+}
+
+var locationDiv3 = document.getElementById("location3");
+locationDiv3.onclick=function(){
+  var re = document.getElementsByClassName('item'); 
+for (var i = re.length-1;i >=0;i--) { 
+re[i].remove(); 
+console.log(i); 
+} 
+buildLocationList(place3);
+
+
+  // This adds the data to the map
+  map.on('load', function (e) {
+    // This is where your '.addLayer()' used to be, instead add only the source without styling a layer
+    map.addSource("places", {
+      "type": "geojson",
+      "data": place3
+    });
+    // Initialize the list
+    buildLocationList(place3);
+});
+
+//remove the marker
+var re = document.getElementsByClassName('marker mapboxgl-marker mapboxgl-marker-anchor-center'); 
+for (var i = re.length-1;i >=0;i--) { 
+re[i].remove(); 
+console.log(i); 
+}
+
+  // This is where your interactions with the symbol layer used to be
+  // Now you have interactions with DOM markers instead
+  place3.features.forEach(function(marker, i) {
+    // Create an img element for the marker
+    var el = document.createElement('div');
+    el.id = "marker-" + i;
+    el.className = 'marker';
+    // Add markers to the map at all points
+    new mapboxgl.Marker(el, {offset: [0, -23]})
+        .setLngLat(marker.geometry.coordinates)
+        .addTo(map);
+
+    el.addEventListener('click', function(e){
+        // 1. Fly to the point
+        flyToStore(marker);
+
+        // 2. Close all other popups and display popup for clicked place
+        createPopUp(marker);
+
+        // 3. Highlight listing in sidebar (and remove highlight for all other listings)
+        var activeItem = document.getElementsByClassName('active');
+
+        e.stopPropagation();
+        if (activeItem[0]) {
+           activeItem[0].classList.remove('active');
+        }
+
+        var listing = document.getElementById('listing-' + i);
+        listing.classList.add('active');
+
+    });
+  });
+}
+ 
+
+  function flyToStore(currentFeature) {
+    map.flyTo({
+        center: currentFeature.geometry.coordinates,
+        zoom: 15
+      });
+  }
+
+  function createPopUp(currentFeature) {
+    var popUps = document.getElementsByClassName('mapboxgl-popup');
+    if (popUps[0]) popUps[0].remove();
+
+
+    var popup = new mapboxgl.Popup({closeOnClick: false})
+          .setLngLat(currentFeature.geometry.coordinates)
+          .setHTML('<h3>' + currentFeature.properties.Sub_Theme + '</h3>' +
+            '<h4>' + currentFeature.properties.Feature_Name + '</h4>')
+          .addTo(map);
+  }
+
+  function buildLocationList(data) {
+    for (i = 0; i < data.features.length; i++) {
+      var currentFeature = data.features[i];
+      var prop = currentFeature.properties;
+
+      var listings = document.getElementById('listings');
+      var listing = listings.appendChild(document.createElement('div'));
+      listing.className = 'item';
+      listing.id = "listing-" + i;
+
+      var link = listing.appendChild(document.createElement('a'));
+      link.href = '#map';
+      link.className = 'title';
+      link.dataPosition = i;
+      link.innerHTML = prop.Sub_Theme;
+
+      var details = listing.appendChild(document.createElement('div'));
+      details.innerHTML = prop.Feature_Name;
+      if (prop.phone) {
+        details.innerHTML += ' &middot; ' + prop.phoneFormatted;
+      }
+
+      link.addEventListener('click', function(e){
+        // Update the currentFeature to the place associated with the clicked link
+        var clickedListing = data.features[this.dataPosition];
+
+        // 1. Fly to the point
+        flyToStore(clickedListing);
+
+        // 2. Close all other popups and display popup for clicked place
+        createPopUp(clickedListing);
+
+        // 3. Highlight listing in sidebar (and remove highlight for all other listings)
+        var activeItem = document.getElementsByClassName('active');
+
+        if (activeItem[0]) {
+           activeItem[0].classList.remove('active');
+        }
+        this.parentNode.classList.add('active');
+
+      });
+    }
+  }
+</script>
+
+<footer id="footer" style= "top:600px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p><a href="#page-top">Back to Top </a></p>		
+          <div>©Icons made by <a href="https://www.flaticon.com/authors/popcorns-arts" title="Icon Pond">Icon Pond</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"             title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- jQuery -->
+<script src="js/vendor/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/vendor/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="js/vendor/jquery.easing.min.js"></script>
+
+<!-- Contact Form JavaScript -->
+<script src="js/vendor/jqBootstrapValidation.js"></script>
+<script src="js/vendor/contact_me.js"></script>
+<script src="js/vendor/owl.carousel.min.js"></script>
+<script src="js/vendor/prettify.js"></script>
+<script type="text/javascript" src="js/vendor/css3-animate-it.js"></script>
+
+<!-- Theme JavaScript -->
+<script src="js/vendor/agency.min.js"></script>
+<script src="js/vendor/jquery.mixitup.js"></script>
+<script src="js/vendor/wow.min.js"></script>
+<script src="js/vendor/gmaps.js"></script>
+<script src="js/main.js"></script>
+<script src="js/script.js"></script>
+
+
+  
+  </body>
+</html>
+
