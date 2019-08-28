@@ -1,0 +1,99 @@
+ul,li,body{
+    padding: 0;margin: 0;list-style: none;
+}
+@font-face {font-family: 'iconfont';
+    src: url('../fonts/iconfont.eot'); /* IE9*/
+    src: url('../fonts/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('../fonts/huaban.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../fonts/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+body{
+    padding-top: 0px;
+    background: white;
+}
+.container{
+    width: 640px;
+    height:auto;
+    margin:0 auto;
+}
+.menu{
+    /*padding-top:25px;*/
+    /*padding-bottom: 25px;*/
+    width: 100px;
+    height:auto;
+    text-align: center;
+    line-height: 50px;
+    background:rgb(190, 228, 245);
+    position: absolute;
+    top:320px;
+    left: 150px;
+    z-index: 20;
+    cursor: pointer;
+    color: white;
+}
+.menu .parent{
+    width: 100px;
+    height:50px;
+    position: relative;
+}
+.parent:last-of-type{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
+}
+.menu .parent div{
+    width: 100%;
+    height:100%;
+}
+.son{
+    width:150px;
+    display: none;
+    position: absolute;
+    top:0;
+    left: 100px;
+}
+.son li{
+    background:rgb(190, 228, 245);
+    color:black;
+}
+.son li:hover{
+    background: orange;
+    color: white;
+}
+.box{
+    width: 100%;height: 600px;
+    position: relative;
+    margin-bottom: 80px;
+    margin-top: 80px;
+}
+.copy{
+    position: absolute;
+    left: 0;
+    top:0;
+    z-index: 1;
+    width: 100%;
+    height:100%;
+
+}
+
+.xp{
+    border:1px solid black;
+    border-radius: 25px; 
+    width: 18px;height:18px;
+    position: absolute;
+    display: none;
+}
+.selectarea{
+    width: 100px;
+    height:100px;
+    border:1px dotted black;
+    position: absolute;
+    left: 0;
+    top:0;
+    display: none;
+}
+.color-group{position: absolute;;width: 30px;left: 200px;top:640px;transform: translate(0,-150px)}
+.color-group ul{list-style: none;}
+.color-group ul li{width: 30px;height: 30px;margin: 10px 0;border-radius: 50%;box-sizing: border-box;border:3px solid white;box-shadow: 0 0 8px rgba(0,0,0,0.2);cursor: pointer;transition: 0.3s;}
+.color-group ul li.active{box-shadow:0 0 15px #00CCFF;}
